@@ -42,17 +42,6 @@
         position: relative;
     }
 
-    &__rating {
-        position: absolute;
-        bottom: 15px;
-        left: 15px;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 5px 10px;
-        border-radius: 20px;
-        color: #ffd700;
-        font-size: 14px;
-    }
-
     &__info {
         padding: 20px;
     }
@@ -108,4 +97,13 @@
             background-color: #0052a3;
         }
     }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }

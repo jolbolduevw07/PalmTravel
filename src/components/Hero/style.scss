@@ -1,29 +1,24 @@
 .hero {
     background: url('../../assets/hero.jpg') no-repeat center center / cover;
-    width: 390px;
-    height: 539px;
+    width: 100%;
+    height: 100vh; // на весь экран
 
     &__title {
         font-family: var(--third-family);
         font-weight: 700;
-        font-size: 28px;
         color: #fff;
-        width: 358px;
     }
 
     &__description {
         font-family: var(--font-family);
         font-weight: 400;
-        font-size: 14px;
         letter-spacing: 0.01em;
         color: #fff;
-        width: 252px;
     }
 
     &__btn {
         font-family: var(--font-family);
         font-weight: 600;
-        font-size: 16px;
         text-align: center;
         color: #fff;
         cursor: pointer;
