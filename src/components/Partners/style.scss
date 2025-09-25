@@ -1,0 +1,186 @@
+/* ========= Настройка ========= */
+$radius: 24px;
+$gap: 40px;
+$speed-edges: 10%;
+$plane-rotate: 6deg;
+
+/* ========= Секция ========= */
+.partners {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius;
+  padding: 72px 48px 125px; // десктоп дефолт
+  color: #fff;
+  background: linear-gradient(180deg, #78bff6 0%, #3a86d1 100%);
+
+  @media (max-width: 1024px) {
+    padding: 64px 24px 40px;
+  }
+  @media (max-width: 768px) {
+    padding: 48px 16px 32px;
+  }
+}
+.partners__moboleair{
+  width: 310px;
+  margin-left: 20px;
+}
+
+/* Декоративные облака */
+.partners__blob {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(40px);
+  opacity: 0.25;
+  background: #fff;
+
+  &--tl {
+    width: 320px;
+    height: 320px;
+    top: -80px;
+    left: -120px;
+  }
+
+  &--br {
+    width: 280px;
+    height: 280px;
+    right: -100px;
+    bottom: -60px;
+  }
+}
+
+/* Самолёт */
+.partners__plane {
+  position: absolute;
+  right: 65px;
+  top: 75px;
+  width: clamp(320px, 40vw, 560px);
+  transform: rotate($plane-rotate);
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.25));
+  user-select: none;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    top: -64px;
+    right: 8px;
+  }
+}
+
+/* Заголовок и текст */
+.partners__title {
+  text-align: left;
+  font-weight: 400; // дефолт на десктопе
+  font-size: clamp(22px, 3.2vw, 36px);
+
+  @media (max-width: 768px) {
+    font-weight: 1600px;
+    text-align: center;
+
+  }
+}
+
+.partners__text {
+  margin: 10px auto 0;
+  max-width: 760px;
+  font-size: clamp(14px, 1.8vw, 16px);
+  line-height: 1.6;
+  opacity: 0.95;
+}
+.partners__airliners{
+  display: flex;
+  flex-direction: column;
+  max-width: 431px;
+  text-align: left;
+}
+
+/* ========= Бегущие ряды ========= */
+.partners__rows {
+  margin-top: 150px; // дефолт десктоп
+
+  @media (max-width: 1024px) {
+    margin-top: 28px;
+  }
+}
+
+/* Контейнер трека */
+.partners__marquee {
+  position: relative;
+  overflow: hidden;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black $speed-edges,
+    black calc(100% - #{$speed-edges}),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black $speed-edges,
+    black calc(100% - #{$speed-edges}),
+    transparent 100%
+  );
+}
+.img__air__title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Лента логотипов */
+.partners__track {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--speed, 28s);
+}
+
+.partners__track--right {
+  animation-name: partners-scroll-right;
+}
+.partners__track--left {
+  animation-name: partners-scroll-left;
+}
+
+/* Элемент и логотип */
+// .partners__item {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// .partners__logo {
+//   height: 28px;
+//   width: auto;
+//   object-fit: contain;
+//   opacity: 0.9;
+//   transition: opacity 0.2s ease;
+//   will-change: transform;
+// }
+
+.partners__item:hover .partners__logo {
+  opacity: 1;
+}
+
+/* Анимации */
+@keyframes partners-scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes partners-scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
