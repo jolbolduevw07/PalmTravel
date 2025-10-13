@@ -70,40 +70,42 @@ const Partners: React.FC = () => {
   const { row1, row2 } = usePartnerLogos();
 
   return (
-    <section className="partners">
+    <section className="partners ">
+      <div className="container">
+        <div className="partners__airliners">
+          {/* Десктопная версия (airbus) */}
+          <img
+            src={airbus}
+            alt="airplane"
+            draggable={false}
+            className="hidden md:block partners__plane"
+          />
+
+          {/* Мобильная версия (airmobil) */}
+          <img
+            src={airmobil}
+            alt="airplane mobile"
+            className="block md:hidden partners__moboleair"
+          />
 
 
-      <div className="partners__airliners">
-        {/* Десктопная версия (airbus) */}
-        <img
-          src={airbus}
-          alt="airplane"
-          draggable={false}
-          className="hidden md:block partners__plane"
-        />
 
-        {/* Мобильная версия (airmobil) */}
-        <img
-          src={airmobil}
-          alt="airplane mobile"
-          className="block md:hidden partners__moboleair"
-        />
+          <h2 className="partners__title">Наши партнёры</h2>
+          <p className="partners__text">
+            Благодаря нашему широкому сотрудничеству с более чем 200 ведущими
+            авиакомпаниями по всему миру, мы соединим вас с любым пунктом
+            назначения между странами и городами.
+          </p>
+        </div>
 
 
-
-        <h2 className="partners__title">Наши партнёры</h2>
-        <p className="partners__text">
-          Благодаря нашему широкому сотрудничеству с более чем 200 ведущими
-          авиакомпаниями по всему миру, мы соединим вас с любым пунктом
-          назначения между странами и городами.
-        </p>
+        <div className="partners__rows">
+          <LogoRow files={row1} direction="right" speedSec={30} size={28} />
+          <LogoRow files={row2} direction="left" speedSec={26} size={28} />
+        </div>
       </div>
 
 
-      <div className="partners__rows">
-        <LogoRow files={row1} direction="right" speedSec={30} size={28} />
-        <LogoRow files={row2} direction="left" speedSec={26} size={28} />
-      </div>
     </section>
   );
 };

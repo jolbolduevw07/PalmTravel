@@ -48,47 +48,50 @@ function CombinedComponent() {
 
   return (
     <div className="combined-container">
-      <div className="faq-section">
-        <h1 className="section-title">Часто задаваемые вопросы</h1>
+      <div className="container">
+        <div className="faq-section">
+          <h1 className="section-title">Часто задаваемые вопросы</h1>
 
-        {isMobile ? (
-          <>
-            {/* Свайпер для мобилок */}
-            <Swiper
-              modules={[Pagination]}
-              spaceBetween={16}
-              slidesPerView={1.1}
-              centeredSlides={true}
-              pagination={{
-                clickable: true,
-                el: ".faq-pagination",
-                type: "bullets",
-              }}
-              className="faq-swiper"
-            >
+          {isMobile ? (
+            <>
+              {/* Свайпер для мобилок */}
+              <Swiper
+                modules={[Pagination]}
+                spaceBetween={16}
+                slidesPerView={1.1}
+                centeredSlides={true}
+                pagination={{
+                  clickable: true,
+                  el: ".faq-pagination",
+                  type: "bullets",
+                }}
+                className="faq-swiper"
+              >
+                {faqItems.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="faq-card">
+                      <h3 className="faq-question">{item.question}</h3>
+                      <p className="faq-answer">{item.answer}</p>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div className="faq-pagination"></div>
+            </>
+          ) : (
+            /* Сетка на десктопе */
+            <div className="faq-grid">
               {faqItems.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div className="faq-card">
-                    <h3 className="faq-question">{item.question}</h3>
-                    <p className="faq-answer">{item.answer}</p>
-                  </div>
-                </SwiperSlide>
+                <div className="faq-card" key={index}>
+                  <h3 className="faq-question">{item.question}</h3>
+                  <p className="faq-answer">{item.answer}</p>
+                </div>
               ))}
-            </Swiper>
-            <div className="faq-pagination"></div>
-          </>
-        ) : (
-          /* Сетка на десктопе */
-          <div className="faq-grid">
-            {faqItems.map((item, index) => (
-              <div className="faq-card" key={index}>
-                <h3 className="faq-question">{item.question}</h3>
-                <p className="faq-answer">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        )}
+            </div>
+          )}
+        </div>
       </div>
+
     </div>
   );
 }

@@ -14,11 +14,8 @@
     "framer-motion": "^12.23.12",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-<<<<<<< HEAD
     "sass": "^1.93.2",
-=======
     "swiper": "^11.2.10",
->>>>>>> Bekensexyboy312
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
