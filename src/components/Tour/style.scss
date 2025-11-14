@@ -1,5 +1,5 @@
 .tour {
-    padding: 60px 0;
+    padding: 40px 0;
     background-color: #f8f9fa;
 
     .container {
@@ -11,15 +11,69 @@
     &__title {
         font-family: var(--third-family);
         font-weight: 600;
-        font-size: 24px;
+        font-size: 20px;
         text-align: center;
         color: #081b2f;
+        margin-bottom: 20px;
+
+        @media (min-width: 768px) {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
     }
 
     &__content {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 30px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+
+        @media (min-width: 640px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        @media (min-width: 1024px) {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+    }
+
+    // Стили для горизонтального скролла (альтернативный вариант)
+    &__scroll {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 10px 15px;
+        margin: 0 -15px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            overflow-x: visible;
+            padding: 0;
+            margin: 0;
+        }
+
+        @media (min-width: 1024px) {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tour-card {
+            min-width: 280px;
+            flex-shrink: 0;
+
+            @media (min-width: 768px) {
+                min-width: auto;
+            }
+        }
     }
 }
 
@@ -29,58 +83,103 @@
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
 
     &:hover {
         transform: translateY(-5px);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+        @media (max-width: 767px) {
+            transform: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
     }
 
     &__image {
-        height: 200px;
+        height: 160px;
         background-size: cover;
         background-position: center;
         position: relative;
+
+        @media (min-width: 768px) {
+            height: 200px;
+        }
+    }
+
+    &__rating {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 14px;
     }
 
     &__info {
-        padding: 20px;
+        padding: 16px;
+
+        @media (min-width: 768px) {
+            padding: 20px;
+        }
     }
 
     &__title {
         font-family: var(--font-family);
         font-weight: 500;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 133%;
         color: #081b2f;
+        margin-bottom: 8px;
+
+        @media (min-width: 768px) {
+            font-size: 18px;
+        }
     }
 
     &__date {
         font-family: var(--font-family);
         font-weight: 400;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 150%;
         color: #86898b;
+        margin-bottom: 8px;
+
+        @media (min-width: 768px) {
+            font-size: 16px;
+        }
     }
 
     &__destination {
-        margin: 0 0 15px 0;
-        font-size: 16px;
+        margin: 0 0 12px 0;
+        font-size: 14px;
         color: #0066cc;
         font-weight: 600;
+
+        @media (min-width: 768px) {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
     }
 
     &__footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 10px;
     }
 
     &__price {
         font-family: var(--font-family);
         font-weight: 500;
-        font-size: 24px;
+        font-size: 20px;
         line-height: 133%;
         color: #081b2f;
+        white-space: nowrap;
+
+        @media (min-width: 768px) {
+            font-size: 24px;
+        }
     }
 
     &__button {
@@ -92,13 +191,69 @@
         cursor: pointer;
         font-size: 14px;
         transition: background-color 0.3s;
+        white-space: nowrap;
+        flex-shrink: 0;
 
         &:hover {
             background-color: #0052a3;
         }
+
+        &:active {
+            transform: scale(0.98);
+        }
     }
 }
 
+// Мобильная адаптация для очень маленьких экранов
+@media (max-width: 480px) {
+    .tour {
+        padding: 30px 0;
+
+        .container {
+            padding: 0 10px;
+        }
+
+        &__title {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .tour-card {
+        border-radius: 8px;
+
+        &__image {
+            height: 140px;
+        }
+
+        &__info {
+            padding: 12px;
+        }
+
+        &__title {
+            font-size: 15px;
+        }
+
+        &__date {
+            font-size: 13px;
+        }
+
+        &__destination {
+            font-size: 13px;
+        }
+
+        &__price {
+            font-size: 18px;
+        }
+
+        &__button {
+            padding: 6px 12px;
+            font-size: 13px;
+        }
+    }
+}
+
+// Утилитарные классы для скрытия скроллбара
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
@@ -106,4 +261,28 @@
 .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+// Дополнительные утилитарные классы для отступов
+.py-6 {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.py-10 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.mb-4 {
+    margin-bottom: 16px;
+}
+
+.mb-6 {
+    margin-bottom: 24px;
+}
+
+.px-4 {
+    padding-left: 16px;
+    padding-right: 16px;
 }

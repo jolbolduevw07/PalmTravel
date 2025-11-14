@@ -38,30 +38,32 @@ const LogoRow: React.FC<{
 
   return (
     <div className="partners__marquee">
-      <ul
-        className={`partners__track ${direction === "right"
-          ? "partners__track--right"
-          : "partners__track--left"
-          }`}
-        style={{ ["--speed" as any]: `${speedSec}s` }}
-      >
-        {doubled.map((src, i) => {
-          const name =
-            src.split("/").pop()?.replace(/\.\w+$/, "").replace(/[-_]/g, " ") ??
-            `logo-${i}`;
-          return (
-            <li key={`${src}-${i}`} className="partners__item">
-              <img
-                src={src}
-                alt={name}
-                className="partners__logo"
-                style={{ height: size }}
-                loading="lazy"
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <div className="container">
+        <ul
+          className={`partners__track ${direction === "right"
+            ? "partners__track--right"
+            : "partners__track--left"
+            }`}
+          style={{ ["--speed" as any]: `${speedSec}s` }}
+        >
+          {doubled.map((src, i) => {
+            const name =
+              src.split("/").pop()?.replace(/\.\w+$/, "").replace(/[-_]/g, " ") ??
+              `logo-${i}`;
+            return (
+              <li key={`${src}-${i}`} className="partners__item">
+                <img
+                  src={src}
+                  alt={name}
+                  className="partners__logo"
+                  style={{ height: size }}
+                  loading="lazy"
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
@@ -104,10 +106,8 @@ const Partners: React.FC = () => {
           <LogoRow files={row2} direction="left" speedSec={26} size={28} />
         </div>
       </div>
-
-
     </section>
   );
-};
+}
 
 export default Partners;

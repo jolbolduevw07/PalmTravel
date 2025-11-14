@@ -3,7 +3,7 @@ import React from "react";
 
 function About() {
   return (
-    <section className="about">
+   <section className="about">
 
       <div className="container ">
         <div className="about__content flex flex-col items-center rounded-[24px] w-[358px] h-[1200px] gap-10 backdrop-blur-[205px] shadow-[0_64px_46px_-17px_rgba(160,204,253,0.4)] bg-green-300 md:hidden">
@@ -93,17 +93,16 @@ function About() {
               </svg>
               <p className="font-[var(--third-family)] font-semibold text-[32px] leading-[125%] text-white">Скорость</p>
             </div>
-
           </div>
-
-
-
         </div>
-
-
       </div>
     </section>
   );
 }
 
 export default About;
+
+
+
+
+

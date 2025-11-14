@@ -10,28 +10,28 @@ function CombinedComponent() {
 
   const faqItems = [
     {
-      question: "How do I book a flight or hotel on Flywere?",
-      answer: "Visit our site, enter travel details, choose options, and proceed to checkout for a seamless booking experience."
+      question: "Какие туры вы предлагаете?",
+      answer: "Мы предлагаем разнообразные туры: экскурсионные, пляжные, горнолыжные, круизы, а также индивидуальные туры под ваши пожелания."
     },
     {
-      question: "How can I cancel my booking?",
-      answer: "You can cancel through your account or by contacting support."
+      question: "Какова стоимость туров и что в нее входит?",
+      answer: "Стоимость зависит от направления и типа тура. Обычно она включает проживание, питание, трансфер и экскурсионное обслуживание. Дополнительно оплачиваются авиабилеты, страховка и личные расходы."
     },
     {
-      question: "Is there a mobile app available?",
-      answer: "Yes, our app is available on both iOS and Android."
+      question: "Какие документы нужны для поездки за границу?",
+      answer: "Для международных поездок обычно требуется заграничный паспорт, виза (если необходимо) и страховой полис. Для некоторых стран могут понадобиться прививки или справки о здоровье."
     },
     {
-      question: "Is there a loyalty program?",
-      answer: "Yes, join our loyalty program to earn points and rewards."
+      question: "Как забронировать тур и можно ли его изменить?",
+      answer: "Бронирование возможно онлайн, по телефону или в офисе. Изменения возможны в зависимости от условий туроператора, рекомендуем уточнять заранее."
     },
     {
-      question: "Can I change my booking?",
-      answer: "Yes, modifications are possible depending on airline or hotel policies."
+      question: "Есть ли страховка и что она покрывает?",
+      answer: "Да, мы предлагаем туристическую страховку, которая покрывает медицинские расходы, потерю багажа и отмену поездки. Подробности можно уточнить при оформлении тура."
     },
     {
-      question: "What payment methods are supported?",
-      answer: "We support cards, PayPal, and more."
+      question: "Какие меры безопасности вы принимаете в связи с COVID-19 и другими рисками?",
+      answer: "Мы следуем международным стандартам безопасности, включая проверку состояния здоровья перед поездкой, сотрудничество с проверенными партнерами и информирование клиентов о правилах страны назначения."
     }
   ];
 
@@ -40,7 +40,7 @@ function CombinedComponent() {
       setIsMobile(window.innerWidth < 768);
     };
 
-    handleResize(); // запустим при первом рендере
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
@@ -54,16 +54,14 @@ function CombinedComponent() {
 
           {isMobile ? (
             <>
-              {/* Свайпер для мобилок */}
+              {/* Swiper с карточками по центру */}
               <Swiper
                 modules={[Pagination]}
                 spaceBetween={16}
-                slidesPerView={1.1}
-                centeredSlides={true}
+                slidesPerView={1}
                 pagination={{
                   clickable: true,
                   el: ".faq-pagination",
-                  type: "bullets",
                 }}
                 className="faq-swiper"
               >
@@ -79,7 +77,7 @@ function CombinedComponent() {
               <div className="faq-pagination"></div>
             </>
           ) : (
-            /* Сетка на десктопе */
+            /* Сетка на десктопе с центрированием */
             <div className="faq-grid">
               {faqItems.map((item, index) => (
                 <div className="faq-card" key={index}>
@@ -91,7 +89,6 @@ function CombinedComponent() {
           )}
         </div>
       </div>
-
     </div>
   );
 }
