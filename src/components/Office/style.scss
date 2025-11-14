@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .office-card {
     background: #fff;
     border-radius: 20px;
@@ -82,7 +84,7 @@
                     transition: background 0.3s;
 
                     &:hover {
-                        background: darken(#f78c1f, 10%);
+                        background: color.adjust(#f78c1f, $lightness: -10%);
                     }
                 }
             }
